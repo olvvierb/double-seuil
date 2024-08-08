@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double seuil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Double Seuil</h1>
+    <form id="calc-form">
+        <div class="field">
+            <label class="label">Note obtenue au quiz (%)</label>
+            <div class="control">
+                <input class="input" type="number" id="quiz-score" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Note obtenue à l'examen intra (%)</label>
+            <div class="control">
+                <input class="input" type="number" id="intra-score" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Pondération du quiz (%)</label>
+            <div class="control">
+                <input class="input" type="number" step="0.01" id="quiz-weight" value="10" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Pondération de l'examen intra (%)</label>
+            <div class="control">
+                <input class="input" type="number" step="0.01" id="intra-weight" value="30" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Pondération de l'examen final (%)</label>
+            <div class="control">
+                <input class="input" type="number" step="0.01" id="final-weight" value="30" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Nombre de laboratoires</label>
+            <div class="control">
+                <input class="input" type="number" id="num-labs" required>
+            </div>
+        </div>
+        <div id="labs-container"></div>
+        <div class="control">
+            <button class="button is-primary" type="button" onclick="addLabFields()">Ajouter laboratoires</button>
+        </div>
+        <br>
+        <div class="control">
+            <button class="button is-primary" type="button" onclick="calculateFinalScore()">Calculer</button>
+        </div>
+    </form>
+    <div class="notification is-info" id="result" style="display:none;">
+        Note nécessaire à l'examen final : <span id="final-score"></span>%<br>
+        Moyenne nécessaire pour les laboratoires restants : <span id="lab-average"></span>%
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
